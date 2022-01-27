@@ -30,12 +30,16 @@ public class MemoryPostRepository implements PostRepository{
     @Override
     public Optional<Post> findByWriter(String writer) {
         return store.values().stream()
-                .filter(post -> post.getTitle().equals(writer))
+                .filter(post -> post.getWriter().equals(writer))
                 .findAny();
     }
 
     @Override
     public List<Post> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clear(){
+        store.clear();
     }
 }
