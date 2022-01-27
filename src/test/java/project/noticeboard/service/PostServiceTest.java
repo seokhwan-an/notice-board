@@ -25,6 +25,22 @@ public class PostServiceTest {
     public void afterEach(){
         postRepository.clear();
     }
+    @Test
+    public void 글_저장(){
+        //given
+        Post post = new Post();
+        post.setTitle("연습");
+        post.setWriter("홍길동");
+        post.setBody("연습글 입니다.");
+        postRepository.save(post);
+
+        //when
+        Long result = postService.save(post); //postService를 통해 가져온 게시글 목록
+
+        // then
+        Post findPost = postRepository.findById(result).get(); //post
+        assertEquals(post.getTitle(), findPost.getTitle());
+    }
 
     @Test
     public void 글_제목_검색() {
