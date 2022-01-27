@@ -19,9 +19,9 @@ public class PostService {
         return post.getId();
     }
     //
-    public String findbyId(Post post){
+    public Post findbyId(Post post){
        Post get = postRepository.findById(post.getId()).get();
-       return get.getTitle();
+       return get;
     }
     // 제목 검색 기능
     public Optional<Post> findbyTitle(Post post){
