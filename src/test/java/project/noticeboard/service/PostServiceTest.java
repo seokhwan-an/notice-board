@@ -51,11 +51,11 @@ public class PostServiceTest {
         postRepository.save(post);
 
         //when
-        String result = postService.findbyId(post);
+        Post result = postService.findbyId(post);
 
         // then
         Post findPost = postRepository.findById(post.getId()).get(); //post
-        assertEquals(result, findPost.getTitle());
+        assertEquals(result, findPost);
     }
     @Test
     public void 글_제목_검색() {
