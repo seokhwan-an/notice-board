@@ -18,6 +18,11 @@ public class PostService {
         postRepository.save(post);
         return post.getId();
     }
+    //
+    public String findbyId(Post post){
+       Post get = postRepository.findById(post.getId()).get();
+       return get.getTitle();
+    }
     // 제목 검색 기능
     public Optional<Post> findbyTitle(Post post){
          Optional<Post> result = Optional.ofNullable(postRepository.findByTitle(post.getTitle()).get());
@@ -31,7 +36,7 @@ public class PostService {
     }
 
     // 모든 글 반환 기능
-    public List<Post> findAll(){
+    public List<Post> findPosts(){
         List<Post> result = postRepository.findAll();
         return result;
     }
