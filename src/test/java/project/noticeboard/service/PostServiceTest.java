@@ -41,7 +41,22 @@ public class PostServiceTest {
         Post findPost = postRepository.findById(result).get(); //post
         assertEquals(post.getTitle(), findPost.getTitle());
     }
+    @Test
+    public void 글_조회(){
+        //given
+        Post post = new Post();
+        post.setTitle("연습");
+        post.setWriter("홍길동");
+        post.setBody("연습글 입니다.");
+        postRepository.save(post);
 
+        //when
+        String result = postService.findbyId(post);
+
+        // then
+        Post findPost = postRepository.findById(post.getId()).get(); //post
+        assertEquals(result, findPost.getTitle());
+    }
     @Test
     public void 글_제목_검색() {
         //given
@@ -104,7 +119,7 @@ public class PostServiceTest {
         postRepository.save(post2);
 
         //when
-        List<Post> result = postService.findAll(); //postService를 통해 가져온 게시글 목록
+        List<Post> result = postService.findPosts(); //postService를 통해 가져온 게시글 목록
 
         // then
         List<Post> posts = postRepository.findAll(); //post
