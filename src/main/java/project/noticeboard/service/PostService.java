@@ -13,6 +13,11 @@ public class PostService {
     public PostService(PostRepository postRepository){
         this.postRepository = postRepository;
     }
+    // 저장 기능
+    public Long save(Post post){
+        postRepository.save(post);
+        return post.getId();
+    }
     // 제목 검색 기능
     public Optional<Post> findbyTitle(Post post){
          Optional<Post> result = Optional.ofNullable(postRepository.findByTitle(post.getTitle()).get());
