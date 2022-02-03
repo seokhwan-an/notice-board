@@ -48,4 +48,10 @@ public class JpaPostRepository implements PostRepository{
                .getResultList();
        return posts;
     }
+
+    @Override
+    public void delete(Long id){
+        Optional<Post> post = findById(id);
+        post.ifPresent(value -> em.remove(value));
+    }
 }

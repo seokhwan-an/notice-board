@@ -21,9 +21,9 @@ public class PostService {
         return post.getId();
     }
     //
-    public Post findbyId(Long id){
-       Post get = postRepository.findById(id).get();
-       return get;
+    public Optional<Post> findbyId(Long id){
+        Optional<Post> get = Optional.ofNullable(postRepository.findById(id)).get();
+        return get;
     }
     // 제목 검색 기능
     public Optional<Post> findbyTitle(Post post){
@@ -41,5 +41,9 @@ public class PostService {
     public List<Post> findPosts(){
         List<Post> result = postRepository.findAll();
         return result;
+    }
+    // 게시글 삭제
+    public void delete(Long id){
+        postRepository.delete(id);
     }
 }

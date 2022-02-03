@@ -51,10 +51,10 @@ public class PostServiceTest {
         postRepository.save(post);
 
         //when
-        Post result = postService.findbyId(post.getId());
+        Optional<Post> result = postService.findbyId(post.getId());
 
         // then
-        Post findPost = postRepository.findById(post.getId()).get(); //post
+        Optional<Post> findPost = Optional.of(postRepository.findById(post.getId()).get()); //post
         assertEquals(result, findPost);
     }
     @Test

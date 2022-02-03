@@ -39,6 +39,11 @@ public class MemoryPostRepository implements PostRepository{
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public void delete(Long id) {
+        store.remove(id);
+    }
+
     public void clear(){
         store.clear();
     }

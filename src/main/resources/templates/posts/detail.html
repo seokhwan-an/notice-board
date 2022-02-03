@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../detail.css">
+</head>
+<body>
+<div class="container">
+    <h2 th:text="${post.title}"></h2>
+    <div>
+        작성자:
+        <span th:text="${post.writer}"></span>
+    </div>
+    <hr>
+    <div th:text="${post.body}"></div>
+    <div class="button">
+        <button class="edit"><a th:href = "@{'/posts/edit/'+ ${post.id}}">수정하기</a></button>
+        <form th:action="@{'/posts/'+ ${post.id}}" method="post">
+            <button class="delete">삭제하기</button>
+        </form>
+        <button class=""><a href="/">목록</a></button>
+    </div>
+</div>
+
+</body>
+</html>
