@@ -11,4 +11,5 @@ public interface PostRepository {
     Optional<Post> findByTitle(String title);
     Optional<Post> findByWriter(String writer);
     List<Post> findAll();
+    void delete(Long id);
 }
