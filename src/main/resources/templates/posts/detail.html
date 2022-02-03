@@ -15,11 +15,15 @@
     <hr>
     <div th:text="${post.body}"></div>
     <div class="button">
-        <button class="edit"><a th:href = "@{'/posts/edit/'+ ${post.id}}">수정하기</a></button>
+        <form>
+            <button class="edit"><a th:href = "@{'/posts/edit/'+ ${post.id}}">수정하기</a></button>
+        </form>
         <form th:action="@{'/posts/'+ ${post.id}}" method="post">
             <button class="delete">삭제하기</button>
         </form>
+        <form>
         <button class=""><a href="/">목록</a></button>
+        </form>
     </div>
 </div>
 
