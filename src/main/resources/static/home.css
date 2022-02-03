@@ -17,11 +17,14 @@ body {
 h2{
     text-align: center;
 }
+table{
+    width: 80%;
+    margin: auto;
+}
 table.type09 {
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
-
 }
 table.type09 thead th {
     padding: 10px;
