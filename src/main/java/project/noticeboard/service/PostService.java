@@ -4,9 +4,11 @@ import project.noticeboard.domain.Post;
 import project.noticeboard.repository.MemoryPostRepository;
 import project.noticeboard.repository.PostRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class PostService {
     private final PostRepository postRepository;
     //DI 가능하게
