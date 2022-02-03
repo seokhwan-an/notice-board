@@ -51,7 +51,7 @@ public class PostServiceTest {
         postRepository.save(post);
 
         //when
-        Post result = postService.findbyId(post);
+        Post result = postService.findbyId(post.getId());
 
         // then
         Post findPost = postRepository.findById(post.getId()).get(); //post

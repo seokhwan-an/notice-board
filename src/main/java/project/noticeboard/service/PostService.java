@@ -21,8 +21,8 @@ public class PostService {
         return post.getId();
     }
     //
-    public Post findbyId(Post post){
-       Post get = postRepository.findById(post.getId()).get();
+    public Post findbyId(Long id){
+       Post get = postRepository.findById(id).get();
        return get;
     }
     // 제목 검색 기능
