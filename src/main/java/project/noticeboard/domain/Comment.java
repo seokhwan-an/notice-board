@@ -13,6 +13,12 @@ public class Comment {
     @Column
     private String content;
 
+    @Column
+    private String created_at;
+
+    @Column
+    private String update_at;
+
     @ManyToOne
     @JoinColumn(name = "postid")
     private Post post;
