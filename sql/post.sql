@@ -5,5 +5,9 @@ create table post
     title varchar(255),
     writer varchar(255),
     body varchar(255),
+    favorite integer,
+    unlike Integer,
+    created_at timestamp,
+    updated_at timestamp,
     primary key(id)
 );
