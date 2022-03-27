@@ -1,10 +1,10 @@
-package project.noticeboard.controller;
+package project.noticeboard.domain.post.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import project.noticeboard.domain.Post;
-import project.noticeboard.service.PostService;
+import project.noticeboard.domain.post.Post;
+import project.noticeboard.domain.post.service.PostService;
 
 import java.util.List;
 import java.util.Optional;

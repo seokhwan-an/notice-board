@@ -1,7 +1,8 @@
-package project.noticeboard.domain;
+package project.noticeboard.domain.comment;
 
 import lombok.Getter;
 import lombok.Setter;
+import project.noticeboard.domain.post.Post;
 
 import javax.persistence.*;
 

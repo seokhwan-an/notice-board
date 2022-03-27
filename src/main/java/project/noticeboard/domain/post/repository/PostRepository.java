@@ -1,6 +1,6 @@
-package project.noticeboard.repository;
+package project.noticeboard.domain.post.repository;
 
-import project.noticeboard.domain.Post;
+import project.noticeboard.domain.post.Post;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,10 +1,11 @@
-package project.noticeboard.repository;
+package project.noticeboard.domain.post.repository;
 
-import project.noticeboard.domain.Post;
+import project.noticeboard.domain.post.Post;
+import project.noticeboard.domain.post.repository.PostRepository;
 
 import java.util.*;
 
-public class MemoryPostRepository implements PostRepository{
+public class MemoryPostRepository implements PostRepository {
     private static Map<Long, Post> store = new HashMap<>();
     private static long sequence = 0L;
 

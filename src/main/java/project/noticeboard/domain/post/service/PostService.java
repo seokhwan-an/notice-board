@@ -1,8 +1,7 @@
-package project.noticeboard.service;
+package project.noticeboard.domain.post.service;
 
-import project.noticeboard.domain.Post;
-import project.noticeboard.repository.MemoryPostRepository;
-import project.noticeboard.repository.PostRepository;
+import project.noticeboard.domain.post.Post;
+import project.noticeboard.domain.post.repository.PostRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

@@ -1,12 +1,13 @@
-package project.noticeboard.repository;
+package project.noticeboard.domain.post.repository;
 
-import project.noticeboard.domain.Post;
+import project.noticeboard.domain.post.Post;
+import project.noticeboard.domain.post.repository.PostRepository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class JpaPostRepository implements PostRepository{
+public class JpaPostRepository implements PostRepository {
 
     private final EntityManager em; // jpa의 동작 구성체
 

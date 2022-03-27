@@ -1,4 +1,4 @@
-package project.noticeboard.controller;
+package project.noticeboard.domain.post.controller;
 
 public class PostForm {
     private String title;
