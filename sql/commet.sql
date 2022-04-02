@@ -6,5 +6,7 @@ create table comment
     content varchar(255),
     created_at timestamp,
     updated_at timestamp,
-    primary key(id)
+    primary key(id),
+    foreign key (post_id)
+    references post(ID) ON UPDATE CASCADE
 );
