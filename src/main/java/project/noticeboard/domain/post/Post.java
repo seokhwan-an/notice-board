@@ -2,9 +2,6 @@ package project.noticeboard.domain.post;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import project.noticeboard.domain.Timestamped;
 import project.noticeboard.domain.board.Board;
 import project.noticeboard.domain.comment.Comment;
@@ -13,7 +10,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity //jpa가 관리하는 entity
+@Entity(name ="post") //jpa가 관리하는 entity
 @Getter @Setter
 public class Post extends Timestamped {
     @Id
