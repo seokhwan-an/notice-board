@@ -1,5 +1,6 @@
 package project.noticeboard.domain.post.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,13 +10,11 @@ import project.noticeboard.domain.post.service.PostService;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Controller
 public class PostController {
-    private final PostService postService;
 
-    public PostController(PostService postService){
-        this.postService = postService;
-    }
+    private final PostService postService;
 
     @GetMapping(value = "/posts/new")
     public String CreateForm(){
@@ -30,14 +29,14 @@ public class PostController {
         post.setWriter(postForm.getWriter());
         post.setBody(postForm.getBody());
         postService.save(post);
-        return "redirect:/";
+        return "redirect:/posts";
     }
-    //메인화면 조회
-    @GetMapping("/")
-    public String list(Model model){
+    // 게시글 조회
+    @GetMapping("/posts")
+    public String showAll(Model model){
         List<Post> posts = postService.findPosts();
         model.addAttribute("posts",posts);
-        return "home";
+        return "posts/posts";
     }
     // 게시글 상세페이지
     @GetMapping("/posts/{no}")
