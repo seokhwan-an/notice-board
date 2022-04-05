@@ -8,26 +8,27 @@
     <nav th:insert="~{fragment/navbar :: navbar}"></nav>
     <div class="container" >
         <div class="row">
-            <div class="col-6">
+            <div class="col-6" th:each="board: ${boards}">
                 <div class="card" style="width: 18rem; margin: auto">
-                    <img src="../img/public.png" class="card-img-top" alt="..." style="height: 220px">
+                    <img th:if="${board.id.toString().equals('1')}" src="../img/public.png" class="card-img-top" alt="..." style="height: 220px">
+                    <img th:if="${board.id.toString().equals('2')}" src="../img/free.jpg" class="card-img-top" alt="..." style="height: 220px">
                     <div class="card-body">
-                        <h5 class="card-title">공지 게시판</h5>
+                        <h5 class="card-title" th:text="${board.type}"></h5>
                         <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">공지 게시판으로 가기</a>
+                        <a th:href="@{/board(type=${board.type})}" class="btn btn-primary">게시판으로 가기</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card" style="width: 18rem; margin: auto">
-                    <img src="../img/free.jpg" class="card-img-top" alt="..." style="height: 220px">
-                    <div class="card-body">
-                        <h5 class="card-title">자유게시판</h5>
-                        <p class="card-text"></p>
-                        <a href="#" class="btn btn-primary">자유 게시판으로 가기</a>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="col-6">-->
+<!--                <div class="card" style="width: 18rem; margin: auto">-->
+<!--                    <img src="../img/free.jpg" class="card-img-top" alt="..." style="height: 220px">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">자유게시판</h5>-->
+<!--                        <p class="card-text"></p>-->
+<!--                        <a href="#" class="btn btn-primary">자유 게시판으로 가기</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </body>
