@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import project.noticeboard.domain.board.Board;
 import project.noticeboard.domain.board.repository.service.BoardService;
 import project.noticeboard.domain.post.Post;
 import project.noticeboard.domain.post.service.PostService;
@@ -70,13 +69,14 @@ public class PostController {
     }
     // 게시글 수정하기
     @PostMapping("/posts/edit/{no}")
-    public String edit(@PathVariable("no") Long no,PostForm postForm){
+    public String edit(@PathVariable("no") Long no, @RequestParam String type, PostForm postForm) throws UnsupportedEncodingException {
         Optional<Post> post = postService.findbyId(no);
         Post edit_post = post.get();
         edit_post.setTitle(postForm.getTitle());
         edit_post.setWriter(postForm.getWriter());
         edit_post.setBody(postForm.getBody());
         postService.save(edit_post);
-        return "redirect: posts/{no}";
+        type= URLEncoder.encode(type, "UTF-8");
+        return "redirect:/board/posts/{no}?type=" + type;
     }
 }
