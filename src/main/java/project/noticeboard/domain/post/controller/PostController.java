@@ -1,10 +1,12 @@
 package project.noticeboard.domain.post.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import project.noticeboard.domain.board.repository.service.BoardService;
+import project.noticeboard.domain.board.Board;
+import project.noticeboard.domain.board.service.BoardService;
 import project.noticeboard.domain.post.Post;
 import project.noticeboard.domain.post.service.PostService;
 
@@ -12,7 +14,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/board")
 @Controller
@@ -30,10 +35,12 @@ public class PostController {
     @PostMapping(value = "/new-posts")
     public String create(PostForm postForm, @RequestParam String type) throws UnsupportedEncodingException {
         Post post = new Post();
+        Board board = boardService.findbyType(type);
         type= URLEncoder.encode(type, "UTF-8");
         post.setTitle(postForm.getTitle());
         post.setWriter(postForm.getWriter());
         post.setBody(postForm.getBody());
+        post.setBoard(board);
         postService.save(post);
         return "redirect:/board?type="+ type;
     }
@@ -41,7 +48,11 @@ public class PostController {
     @GetMapping()
     public String showAll(Model model, @RequestParam String type) {
         List<Post> posts = postService.findPosts();
-        model.addAttribute("posts",posts);
+        List<Post> filter = posts.stream()
+                .filter(post -> post.getBoard().getType().equals(type))
+                .collect(Collectors.toList());
+        model.addAttribute("posts", filter);
+        model.addAttribute("type", type);
         return "posts/posts";
     }
     // 게시글 상세페이지
