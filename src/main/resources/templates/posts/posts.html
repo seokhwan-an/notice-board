@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/base :: common_header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:insert="~{fragment/navbar :: navbar}"></nav>
+<div class="container">
+<h2 th:utext="${type}+게시판">게시판</h2>
+<div class = "write">
+</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="cols" class="id" style="width:5%;">순번</th>
+            <th scope="cols" class="title" style="width: 50%; text-align: center;">제목</th>
+            <th scope="cols" class="writer" style="width: 10%;">작성자</th>
+            <th scope="cols" class="write_date" style="width: 10%;">작성일</th>
+            <th scope="cols" class="view" style="width: 5%;">조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}"></td>
+            <td ><a th:href = "@{'board/posts/'+${post.id}(type = ${type})}" th:text="${post.title}"></a></td>
+            <td th:text="${post.writer}"></td>
+            <td th:text="${post.created_at}"></td>
+            <td>0</td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{board/new-posts(type=${type})}">글작성</a>
+</div>
+</body>
+</html>
