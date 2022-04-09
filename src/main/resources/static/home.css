@@ -38,10 +38,13 @@ table.type09 thead th.id{
     width: 15%;
 }
 table.type09 thead th.title{
-    width: 60%;
+    width: 40%;
 }
 table.type09 thead th.writer{
      width: 15%;
+}
+table.type09 thead th.write_date{
+    width: 20%;
 }
 table.type09 thead th.view{
     width: 10%;
