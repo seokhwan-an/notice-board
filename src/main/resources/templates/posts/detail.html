@@ -31,11 +31,16 @@
         </form>
     </div>
     <div class="mb-3">
-        <form>
-            <label for="exampleFormControlTextarea1" class="form-label">댓글작성</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <button class="delete">작성</button>
-        </form>
+        <a th:href="@{'/board/posts/'+${post.id}+'/new-comment'(type = ${type})}">댓글쓰기</a>
+        <br>
+        <div th:each="comment : ${post.comments}">
+            <div th:text = "${comment.content}"></div>
+            <form th:action="@{'/board/posts/'+${post.id}+'/comment/delete/'+${comment.id}(type=${type})}" method="post">
+                <button class="delete">삭제</button>
+            </form>
+            <a th:href = "@{'/board/posts/'+${post.id}+'/comment/edit/'+${comment.id}(type=${type})}">수정</a>
+            <hr>
+        </div>
     </div>
 </div>
 
