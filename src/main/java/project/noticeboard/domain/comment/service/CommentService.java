@@ -12,6 +12,7 @@ import java.util.Optional;
 
 
 @RequiredArgsConstructor
+@Service
 public class CommentService {
     private final CommentRepository commentRepository;
     //DI 가능하게
