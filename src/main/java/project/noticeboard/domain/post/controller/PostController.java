@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.noticeboard.domain.board.Board;
 import project.noticeboard.domain.board.service.BoardService;
+import project.noticeboard.domain.comment.Comment;
+import project.noticeboard.domain.comment.service.CommentService;
 import project.noticeboard.domain.post.Post;
 import project.noticeboard.domain.post.service.PostService;
 
@@ -25,6 +27,7 @@ public class PostController {
 
     private final PostService postService;
     private final BoardService boardService;
+    private final CommentService commentService;
 
     @GetMapping(value = "/new-posts")
     public String CreateForm(){
@@ -59,8 +62,12 @@ public class PostController {
     @GetMapping("/posts/{no}")
     public String detail(@PathVariable("no") Long no, @RequestParam String type, Model model){
         Optional<Post> post = postService.findbyId(no);
-        log.info("type = " + type );
+        List<Comment> comments = commentService.findComments();
+        List<Comment> filter = comments.stream()
+                .filter(comment -> comment.getPost().getId() == no)
+                .collect(Collectors.toList());
         post.ifPresent(value -> model.addAttribute("post",value));
+        model.addAttribute("comments",filter);
         model.addAttribute("type", type);
         return "posts/detail";
     }
